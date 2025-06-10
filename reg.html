@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Register Form</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-dNmIQXWle8B6U+M1a9FaJx8vmURox0ks2I2XwSnwX9S03S2uZKvXu1VhWgLZ0Nn/7LBBnROJZ3HHaj6I5D5exw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      position: relative;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('./profile_images/y.png') no-repeat center center/cover;
+      filter: blur(8px);
+      z-index: -1;
+    }
+
+    .modal {
+      background-color: black;
+      color: white;
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      max-width: 400px;
+      width: 100%;
+      position: relative;
+    }
+
+    .modal h2 {
+      font-size: 20px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .modal input[type="text"],
+    .modal input[type="email"],
+    .modal input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 5px;
+    }
+
+    .modal button {
+      width: 100%;
+      padding: 12px;
+      background-color: #6c7ae0;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+
+    .thank-you {
+      display: none;
+      font-size: 20px;
+      color: white;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      max-width: 90%;
+      margin: auto;
+    }
+
+    @media (max-width: 480px) {
+      .modal {
+        padding: 20px;
+      }
+
+      .modal h2 {
+        font-size: 18px;
+      }
+
+      .modal button {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="modal" id="registerModal">
+  <h2>REGISTER TO START Portfolio Website</h2>
+  <form id="registerForm">
+    <input type="text" id="fullname" placeholder="Full Name" required>
+    <input type="email" id="email" placeholder="E-mail" required>
+    <input type="password" id="password" placeholder="Password" required>
+    <button type="submit">Register</button>
+  </form>
+</div>
+
+<div class="thank-you" id="thankYouBox">
+  Thank you for registering, <span id="userName"></span>!
+</div>
+
+<script>
+  const form = document.getElementById('registerForm');
+  const modal = document.getElementById('registerModal');
+  const thankYouBox = document.getElementById('thankYouBox');
+  const userNameSpan = document.getElementById('userName');
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    const fullName = document.getElementById('fullname').value;
+    userNameSpan.textContent = fullName;
+    modal.style.display = 'none';
+    thankYouBox.style.display = 'block';
+  });
+</script>
+
+</body>
+</html>
